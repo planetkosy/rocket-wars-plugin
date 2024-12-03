@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="UTF-8">
+	<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>*** Rocket - Wars ***</title>
+</head>
+
+<body onload="loadHighscores('Easy'); loadHighscores('Normal'); loadHighscores('Hard');">
+	<h1 id="title">*** Rocket-Wars ***</h1>
+	<div id="select-difficulty">
+		<b id="addDifficulty">Schwierigkeit auswählen:</b>
+		<select name="difficulty" id="difficulty">
+			<option id="Easy" value="0.75">Easy</option>
+			<option id="Normal" value="1.0">Normal</option>
+			<option id="Hard" value="1.25">Hard</option>
+		</select>
+	</div>
+
+	<div>
+		<canvas id="space-game" width="1280" height="720"></canvas>
+		<button id="startButton" onclick="startGame()">Start</button>
+		<button id="restartButton" onclick="reloadGame()" hidden>Neustart</button>
+	</div>
+
+    <div id="highscores">
+		<!-- Easy -->
+		<h2 id="highscoreListe_Easy">Easy Highscores</h2>
+		<ul id="highscoreList_Easy"></ul>
+		<h2 hidden id="highscore_Easy">Super in den Top 10 Easy, bitte Namen eingeben</h2>
+		<form hidden id="highscoreForm_Easy">
+			<label for="name_Easy">Name:</label>
+			<input type="text" id="name_Easy" maxlength="3" required>
+			<button type="submit">Submit Score</button>
+		</form>
+
+		<!-- Normal -->
+		<h2 id="highscoreListe_Normal">Normal Highscores</h2>
+		<ul id="highscoreList_Normal"></ul>
+		<h2 hidden id="highscore_Normal">Super in den Top 10 Normal, bitte Namen eingeben</h2>
+		<form hidden id="highscoreForm_Normal">
+			<label for="name_Normal">Name:</label>
+			<input type="text" id="name_Normal" maxlength="3" required>
+			<button type="submit">Submit Score</button>
+		</form>
+
+		<!-- Hard -->
+		<h2 id="highscoreListe_Hard">Hard Highscores</h2>
+		<ul id="highscoreList_Hard"></ul>
+		<h2 hidden id="highscore_Hard">Super in den Top 10 Hard, bitte Namen eingeben</h2>
+		<form hidden id="highscoreForm_Hard">
+			<label for="name_Hard">Name:</label>
+			<input type="text" id="name_Hard" maxlength="3" required>
+			<button type="submit">Submit Score</button>
+		</form>
+	</div>
+    
+	<div id="disclaimer">
+		<p>Rocket - Wars v0.1 - Developed by planetkosy.de</p>
+	</div>
+</body>
+
+</html>
