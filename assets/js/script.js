@@ -114,8 +114,8 @@ function initialize() {
     // Definiere Seitenelemente
     selectDifficulty = document.getElementById('difficulty');
     addDifficulty = document.getElementById('addDifficulty');
-	highscores = document.getElementById('highscores');
-	highscoreListeEasy = document.getElementById('highscoreListe_Easy');
+    highscores = document.getElementById('highscores');
+    highscoreListeEasy = document.getElementById('highscoreListe_Easy');
     highscoreListeNormal = document.getElementById('highscoreListe_Normal');
     highscoreListeHard = document.getElementById('highscoreListe_Hard');
     highscoreListEasy = document.getElementById('highscoreList_Easy');
@@ -145,13 +145,13 @@ function initialize() {
         if (gameStarted) {
             selectDifficulty.hidden = true;
             addDifficulty.hidden = true;
-			//highscores.hidden = true;
-			highscoreListeEasy.hidden = true;
-			highscoreListeNormal.hidden = true;
-			highscoreListeHard.hidden = true;
-			highscoreListEasy.hidden = true;
-			highscoreListNormal.hidden = true;
-			highscoreListHard.hidden = true;
+            //highscores.hidden = true;
+            highscoreListeEasy.hidden = true;
+            highscoreListeNormal.hidden = true;
+            highscoreListeHard.hidden = true;
+            highscoreListEasy.hidden = true;
+            highscoreListNormal.hidden = true;
+            highscoreListHard.hidden = true;
             startButton.hidden = true;
             restartButton.hidden = false;
         }
@@ -758,10 +758,10 @@ function initialize() {
         }
     }
 
-    function checkHighscrores(score) {
+    function checkHighscores(score) {
         if (speedMultiplier === 0.75) {
             const highscores_Easy = JSON.parse(localStorage.getItem('highscores_Easy')) || [];
-            const minHighscore_Easy = highscores_Easy.length >= 5 ? highscores_Easy[4].score : 0;
+            const minHighscore_Easy = highscores_Easy.length >= 10 ? highscores_Easy[9].score : 0;
 
             if (score > minHighscore_Easy) {
                 const highscoreForm_Easy = document.getElementById('highscoreForm_Easy');
@@ -775,7 +775,7 @@ function initialize() {
             }
         } else if (speedMultiplier === 1.0) {
             const highscores_Normal = JSON.parse(localStorage.getItem('highscores_Normal')) || [];
-            const minHighscore_Normal = highscores_Normal.length >= 5 ? highscores_Normal[4].score : 0;
+            const minHighscore_Normal = highscores_Normal.length >= 10 ? highscores_Normal[9].score : 0;
 
             if (score > minHighscore_Normal) {
                 const highscoreForm_Normal = document.getElementById('highscoreForm_Normal');
@@ -789,7 +789,7 @@ function initialize() {
             }
         } else if (speedMultiplier === 1.25) {
             const highscores_Hard = JSON.parse(localStorage.getItem('highscores_Hard')) || [];
-            const minHighscore_Hard = highscores_Hard.length >= 5 ? highscores_Hard[4].score : 0;
+            const minHighscore_Hard = highscores_Hard.length >= 10 ? highscores_Hard[9].score : 0;
 
             if (score > minHighscore_Hard) {
                 const highscoreForm_Hard = document.getElementById('highscoreForm_Hard');
@@ -803,6 +803,55 @@ function initialize() {
             }
         }
     }
+
+    /*
+    function checkHighscores(score) {
+        let difficulty = '';
+        if (speedMultiplier === 0.75) {
+            difficulty = 'Easy';
+        } else if (speedMultiplier === 1.0) {
+            difficulty = 'Normal';
+        } else if (speedMultiplier === 1.25) {
+            difficulty = 'Hard';
+        }
+
+        if (difficulty) {
+            jQuery.ajax({
+                url: rocketWarsData.ajaxUrl,
+                type: 'POST',
+                data: {
+                    action: 'load_highscores',
+                    security: rocketWarsData.nonce,
+                    difficulty: difficulty
+                },
+                success: function (response) {
+                    if (response.success && response.data.length >= 10) {
+                        const minHighscore = response.data[response.data.length - 1].score;
+
+                        if (score > minHighscore) {
+                            const formId = `highscoreForm_${difficulty}`;
+                            const elementsToShow = [
+                                formId,
+                                `highscore_${difficulty}`,
+                                `highscoreListe_${difficulty}`,
+                                `highscoreList_${difficulty}`
+                            ];
+
+                            elementsToShow.forEach(id => {
+                                const element = document.getElementById(id);
+                                if (element) {
+                                    element.hidden = false;
+                                }
+                            });
+                        }
+                    }
+                },
+                error: function (error) {
+                    console.error('Error fetching highscores:', error);
+                }
+            });
+        }
+    }*/
 
     function clearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -849,7 +898,7 @@ function initialize() {
             gameOver = true;
             cancelAnimationFrame(animationFrameId);
             animationFrameId = null;
-            checkHighscrores(score);
+            checkHighscores(score);
             drawGameOver();
             return; // Beende die Funktion, wenn die Anzahl der Leben Null ist
         }
