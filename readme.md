@@ -1,4 +1,4 @@
-# Rocket-Wars
+# 🚀 Rocket-Wars 🚀
 
 **Rocket-Wars** ist ein sehr einfaches Space-Arcade-Spiel, bei dem du mit Geschick und Schnelligkeit möglichst viele feindliche UFOs abschießen musst, um Punkte zu sammeln und Highscores zu erreichen!
 
