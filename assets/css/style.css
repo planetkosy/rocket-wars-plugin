@@ -1,10 +1,3 @@
-/*
-body {
-    display: flex;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);
-}*/
-
 .hidden-content {
     display: none;
 }
@@ -12,23 +5,19 @@ body {
 #space-game {
     margin-top: 0%;
     margin-left: 0%;
+	width: 1280px;
+	height: 720px;
 }
-
-/*
-canvas {
-    margin-top: 5%;
-    margin-left: 10%;
-    background-image: url(../assets/icons/rocket-wars.jpg);
-
-}*/
 
 #highscore_Easy {
     position: absolute;
-    left: 40.5%;
-    top: 55%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -0%);
     color: greenyellow;
     font-size: 30px;
+	width: 800px;
+	text-align: center;
 }
 
 #highscoreForm_Easy {
@@ -40,11 +29,11 @@ canvas {
 
 #name_Easy {
     position: absolute;
-    margin-left: -80px;
-    margin-top: 25px;
+    left: 25%;
+    top: 75%;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 30px;
+    height: 50px;
     width: 200px;
     color: rgba(255, 255, 255, 0.9);
     font-size: 20px;
@@ -55,39 +44,45 @@ canvas {
     border-color: greenyellow;
     background-color: rgba(0, 0, 0, 0.25);
     text-align: center;
+	padding: 0;
+	margin: 0;
+	margin-top: 25px;
 }
 
 #highscoreButton_Easy {
     position: absolute;
-    margin-left: 100px;
+	top: 75%;
+    margin-left: 200px;
     margin-top: 25px;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 36px;
-    width: 125px;
+    height: 50px;
+    width: 150px;
     font-size: 20px;
     font-weight: bolder;
-    color: rgba(255, 255, 255, 0.9);
+    color: greenyellow;
     border: 2px;
     border-radius: 5px;
     border-style: solid;
     border-color: greenyellow;
     background-color: rgba(0, 0, 0, 0.25);
+	padding: 0;
 }
 
 #highscoreListe_Easy {
     position: absolute;
-    right: 7.5%;
-    top: 5%;
+    right: 1%;
+    top: 20%;
     font-size: 25px;
     font-weight: bolder;
     color: yellowgreen;
+	padding: 0;
 }
 
 #highscoreList_Easy {
     position: absolute;
-    right: 9.5%;
-    top: 10%;
+    left: 80%;
+    top: 30%;
     transform: translate(20%, 10%);
     font-size: 20px;
     font-weight: bolder;
@@ -96,11 +91,13 @@ canvas {
 
 #highscore_Normal {
     position: absolute;
-    left: 40.5%;
-    top: 55%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -0%);
     color: greenyellow;
     font-size: 30px;
+	width: 800px;
+	text-align: center;
 }
 
 #highscoreForm_Normal {
@@ -112,11 +109,11 @@ canvas {
 
 #name_Normal {
     position: absolute;
-    margin-left: -80px;
-    margin-top: 25px;
+    left: 25%;
+    top: 75%;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 30px;
+    height: 50px;
     width: 200px;
     color: rgba(255, 255, 255, 0.9);
     font-size: 20px;
@@ -127,41 +124,46 @@ canvas {
     border-color: greenyellow;
     background-color: rgba(0, 0, 0, 0.25);
     text-align: center;
+	padding: 0;
+	margin: 0;
+	margin-top: 25px;
 }
 
 #highscoreButton_Normal {
     position: absolute;
-    margin-left: 100px;
+	top: 75%;
+    margin-left: 200px;
     margin-top: 25px;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 36px;
-    width: 125px;
+    height: 50px;
+    width: 150px;
     font-size: 20px;
     font-weight: bolder;
-    color: rgba(255, 255, 255, 0.9);
+    color: greenyellow;
     border: 2px;
     border-radius: 5px;
     border-style: solid;
     border-color: greenyellow;
     background-color: rgba(0, 0, 0, 0.25);
+	padding: 0;
 }
 
 #highscoreListe_Normal {
     position: absolute;
-    transform: translate(13%, -50%);
-    right: 7.5%;
-    top: 35%;
+    right: 1%;
+    top: 20%;
     font-size: 25px;
     font-weight: bolder;
     color: yellowgreen;
+	padding: 0;
 }
 
 #highscoreList_Normal {
     position: absolute;
-    right: 9.5%;
-    top: 40%;
-    transform: translate(-10%, 10%);
+    left: 80%;
+    top: 30%;
+    transform: translate(20%, 10%);
     font-size: 20px;
     font-weight: bolder;
     color: yellowgreen;
@@ -169,11 +171,13 @@ canvas {
 
 #highscore_Hard {
     position: absolute;
-    left: 40.5%;
-    top: 55%;
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -0%);
     color: greenyellow;
     font-size: 30px;
+	width: 800px;
+	text-align: center;
 }
 
 #highscoreForm_Hard {
@@ -185,11 +189,11 @@ canvas {
 
 #name_Hard {
     position: absolute;
-    margin-left: -80px;
-    margin-top: 25px;
+    left: 25%;
+    top: 75%;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 30px;
+    height: 50px;
     width: 200px;
     color: rgba(255, 255, 255, 0.9);
     font-size: 20px;
@@ -200,40 +204,46 @@ canvas {
     border-color: greenyellow;
     background-color: rgba(0, 0, 0, 0.25);
     text-align: center;
+	padding: 0;
+	margin: 0;
+	margin-top: 25px;
 }
 
 #highscoreButton_Hard {
     position: absolute;
-    margin-left: 100px;
+	top: 75%;
+    margin-left: 200px;
     margin-top: 25px;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 36px;
-    width: 125px;
+    height: 50px;
+    width: 150px;
     font-size: 20px;
     font-weight: bolder;
-    color: rgba(255, 255, 255, 0.9);
+    color: greenyellow;
     border: 2px;
     border-radius: 5px;
     border-style: solid;
     border-color: greenyellow;
     background-color: rgba(0, 0, 0, 0.25);
+	padding: 0;
 }
 
 #highscoreListe_Hard {
     position: absolute;
-    right: 7.5%;
-    top: 65%;
+    right: 1%;
+    top: 20%;
     font-size: 25px;
     font-weight: bolder;
     color: yellowgreen;
+	padding: 0;
 }
 
 #highscoreList_Hard {
     position: absolute;
-    right: 9.5%;
-    top: 70%;
-    transform: translate(-10%, 10%);
+    left: 80%;
+    top: 30%;
+    transform: translate(20%, 10%);
     font-size: 20px;
     font-weight: bolder;
     color: yellowgreen;
@@ -250,8 +260,8 @@ canvas {
 
 #addDifficulty {
     position: absolute;
-    top: 40%;
-    left: 22%;
+    top: 33%;
+    left: 25%;
     transform: translate(-50%, -50%);
     font-size: 30px;
     font-weight: bolder;
@@ -263,7 +273,7 @@ canvas {
     cursor: pointer;
     position: absolute;
     top: 40%;
-    left: 38%;
+    left: 25%;
     transform: translate(-50%, -50%);
     margin: 10;
     width: 220px;
@@ -291,8 +301,8 @@ option {
     left: 40%;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 75px;
-    width: 200px;
+    height: 125px;
+    width: 250px;
     font-size: 60px;
     font-weight: bolder;
     border: 2px;
@@ -301,16 +311,18 @@ option {
     border-color: greenyellow;
     background-color: rgba(0, 0, 0, 0.4);
     color: greenyellow;
+	padding: 0%;
+	margin: 0%;
 }
 
 #restartButton {
     position: absolute;
-    top: 93%;
-    left: 42%;
+    top: 80%;
+    left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 30px;
-    width: 100px;
+    height: 40px;
+    width: 125px;
     background-color: rgba(0, 0, 0, 0.25);
     color: yellowgreen;
     font-size: 20px;
@@ -319,71 +331,37 @@ option {
     border-radius: 5px;
     border-style: solid;
     border-color: greenyellow;
+	padding: 0%;
+	margin: 0%;
 }
 
-#clearHighscore_Easy {
-    position: absolute;
-    top: 32.5%;
-    right: 3%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    height: 25px;
-    width: 175px;
-    background-color: rgba(0, 0, 0, 0.25);
-    color: yellowgreen;
-    font-size: 15px;
-    font-weight: bolder;
-    border: 1px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: greenyellow;
-    text-align: center;
+#readme {
+	position: absolute;
+    bottom: 20%;
+    left: 35%;
+	margin: 0;
 }
 
-#clearHighscore_Normal {
-    position: absolute;
-    top: 62.5%;
-    right: 3%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    height: 25px;
-    width: 175px;
-    background-color: rgba(0, 0, 0, 0.25);
-    color: yellowgreen;
-    font-size: 15px;
-    font-weight: bolder;
-    border: 1px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: greenyellow;
+#readme a {
+	color: yellowgreen;
+    font-size: 25px;
+    font-weight: bold;    
     text-align: center;
-}
-
-#clearHighscore_Hard {
-    position: absolute;
-    top: 90%;
-    right: 3%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    height: 25px;
-    width: 175px;
-    background-color: rgba(0, 0, 0, 0.25);
-    color: yellowgreen;
-    font-size: 15px;
-    font-weight: bolder;
-    border: 1px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: greenyellow;
-    text-align: center;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 #disclaimer {
     position: absolute;
-    bottom: 0%;
-    right: 4%;
-    color: yellowgreen;
+    bottom: 0px;
+    right: -5%;   
+	margin: 0;
+}
+
+#disclaimer p {
+	color: yellowgreen;
     font-size: 15px;
     font-weight: bold;    
     text-align: center;
+	margin-bottom: 4px;
 }

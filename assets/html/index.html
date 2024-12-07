@@ -9,7 +9,7 @@
 </head>
 
 <body onload="loadHighscores('Easy'); loadHighscores('Normal'); loadHighscores('Hard');">
-	<h1 id="title">*** Rocket-Wars ***</h1>
+	<!--<h1 id="title">*** Rocket-Wars ***</h1>-->
 	<div id="select-difficulty">
 		<b id="addDifficulty">Schwierigkeit auswählen:</b>
 		<select name="difficulty" id="difficulty">
@@ -18,47 +18,47 @@
 			<option id="Hard" value="1.25">Hard</option>
 		</select>
 	</div>
-
+	
 	<div>
 		<canvas id="space-game" width="1280" height="720"></canvas>
 		<button id="startButton" onclick="startGame()">Start</button>
 		<button id="restartButton" onclick="reloadGame()" hidden>Neustart</button>
 	</div>
-
-    <div id="highscores">
+	
+	<div id="highscores">
 		<!-- Easy -->
-		<h2 id="highscoreListe_Easy">Easy Highscores</h2>
-		<ul id="highscoreList_Easy"></ul>
-		<h2 hidden id="highscore_Easy">Super in den Top 10 Easy, bitte Namen eingeben</h2>
+		<h2 id="highscoreListe_Easy" class="highscore-list" hidden>Easy Highscores</h2>
+		<ul id="highscoreList_Easy" class="highscore-list" hidden></ul>
+		<h2 hidden id="highscore_Easy">Super in den Top 10 Easy, bitte Initialen eingeben</h2>
 		<form hidden id="highscoreForm_Easy">
-			<label for="name_Easy">Name:</label>
 			<input type="text" id="name_Easy" maxlength="3" required>
-			<button type="submit">Submit Score</button>
+			<button type="submit" id="highscoreButton_Easy">Speichern</button>
 		</form>
 
 		<!-- Normal -->
-		<h2 id="highscoreListe_Normal">Normal Highscores</h2>
-		<ul id="highscoreList_Normal"></ul>
-		<h2 hidden id="highscore_Normal">Super in den Top 10 Normal, bitte Namen eingeben</h2>
+		<h2 id="highscoreListe_Normal" class="highscore-list" hidden>Normal Highscores</h2>
+		<ul id="highscoreList_Normal" class="highscore-list" hidden></ul>
+		<h2 hidden id="highscore_Normal">Super in den Top 10 Normal, bitte Initialen eingeben</h2>
 		<form hidden id="highscoreForm_Normal">
-			<label for="name_Normal">Name:</label>
 			<input type="text" id="name_Normal" maxlength="3" required>
-			<button type="submit">Submit Score</button>
+			<button type="submit" id="highscoreButton_Normal">Speichern</button>
 		</form>
 
 		<!-- Hard -->
-		<h2 id="highscoreListe_Hard">Hard Highscores</h2>
-		<ul id="highscoreList_Hard"></ul>
-		<h2 hidden id="highscore_Hard">Super in den Top 10 Hard, bitte Namen eingeben</h2>
+		<h2 id="highscoreListe_Hard" class="highscore-list" hidden>Hard Highscores</h2>
+		<ul id="highscoreList_Hard" class="highscore-list" hidden></ul>
+		<h2 hidden id="highscore_Hard">Super in den Top 10 Hard, bitte Initialen eingeben</h2>
 		<form hidden id="highscoreForm_Hard">
-			<label for="name_Hard">Name:</label>
 			<input type="text" id="name_Hard" maxlength="3" required>
-			<button type="submit">Submit Score</button>
+			<button type="submit" id="highscoreButton_Hard">Speichern</button>
 		</form>
 	</div>
-    
+
+	<div id="readme">
+		<a href="https://github.com/planetkosy/rocket-wars-plugin/readme.md" target="_blank">Read-Me</a>
+	</div>
 	<div id="disclaimer">
-		<p>Rocket-Wars v0.2 - developed by planetkosy</p>
+		<p>Rocket-Wars v1.0 - developed by planetkosy</p>
 	</div>
 </body>
 

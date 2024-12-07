@@ -1,9 +1,15 @@
 <?php
 /*
-Plugin Name: Rocket Wars
-Description: Small Game like Space Invaders als Wordpress-Plugin.
-Version: 0.1
-Author: planetkosy
+ * Plugin Name: Rocket-Wars
+ * Plugin URI: https://github.com/planetkosy/rocket-wars-plugin
+ * Description: Very simple Game like Space Invaders.
+ * Version: 1.0
+ * Author: planetkosy
+ * Author URI: https://planetkosy.de/
+ * Github: https://github.com/planetkosy
+ * Tested on WordPress 6.7.1
+ * License: MIT
+ * License URI: https://opensource.org/licenses/MIT
 */
 
 if (!defined('ABSPATH')) {
@@ -55,7 +61,7 @@ function rocket_wars_create_highscore_table()
 
         $sql = "CREATE TABLE $table_name (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
-            difficulty ENUM('easy', 'normal', 'hard') NOT NULL,
+            difficulty ENUM('Easy', 'Normal', 'Hard') NOT NULL,
             name VARCHAR(3) NOT NULL,
             score INT NOT NULL,
             PRIMARY KEY (id)

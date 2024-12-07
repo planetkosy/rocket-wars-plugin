@@ -114,8 +114,8 @@ function initialize() {
     // Definiere Seitenelemente
     selectDifficulty = document.getElementById('difficulty');
     addDifficulty = document.getElementById('addDifficulty');
-    highscores = document.getElementById('highscores');
-    highscoreListeEasy = document.getElementById('highscoreListe_Easy');
+	highscores = document.getElementById('highscores');
+	highscoreListeEasy = document.getElementById('highscoreListe_Easy');
     highscoreListeNormal = document.getElementById('highscoreListe_Normal');
     highscoreListeHard = document.getElementById('highscoreListe_Hard');
     highscoreListEasy = document.getElementById('highscoreList_Easy');
@@ -123,6 +123,7 @@ function initialize() {
     highscoreListHard = document.getElementById('highscoreList_Hard');
     startButton = document.getElementById('startButton');
     restartButton = document.getElementById('restartButton');
+	readmeLink = document.getElementById('readme');
 
     // Definiere die Variablen, um den Status des Spiels zu verfolgen
 
@@ -145,15 +146,16 @@ function initialize() {
         if (gameStarted) {
             selectDifficulty.hidden = true;
             addDifficulty.hidden = true;
-            //highscores.hidden = true;
-            highscoreListeEasy.hidden = true;
-            highscoreListeNormal.hidden = true;
-            highscoreListeHard.hidden = true;
-            highscoreListEasy.hidden = true;
-            highscoreListNormal.hidden = true;
-            highscoreListHard.hidden = true;
+			//highscores.hidden = true;
+			highscoreListeEasy.hidden = true;
+			highscoreListeNormal.hidden = true;
+			highscoreListeHard.hidden = true;
+			highscoreListEasy.hidden = true;
+			highscoreListNormal.hidden = true;
+			highscoreListHard.hidden = true;
             startButton.hidden = true;
-            restartButton.hidden = false;
+            restartButton.hidden = true;
+			readmeLink.hidden = true;
         }
     }
 
@@ -419,9 +421,24 @@ function initialize() {
 
     // Überprüfe, ob die Pause-Taste gedrückt wurde
     function checkPause() {
-        if (isPaused) {
+        let difficulty = '';
+        if (speedMultiplier === 0.75) {
+            difficulty = 'Easy';
+        } else if (speedMultiplier === 1.0) {
+            difficulty = 'Normal';
+        } else if (speedMultiplier === 1.25) {
+            difficulty = 'Hard';
+        }
+
+        const highscoreListe = document.getElementById(`highscoreListe_${difficulty}`);
+        const highscoreList = document.getElementById(`highscoreList_${difficulty}`);
+
+        if (isPaused) {            
             cancelAnimationFrame(animationFrameId);
             isAnimating = false;
+			restartButton.hidden = false;
+            highscoreListe.hidden = false;
+            highscoreList.hidden = false;
             ctx.fillStyle = 'orange';
             ctx.font = 'bold 50px sans-serif';
             ctx.textAlign = 'center';
@@ -430,6 +447,9 @@ function initialize() {
             if (!isAnimating) {
                 animationFrameId = requestAnimationFrame(update);
                 isAnimating = true;
+				restartButton.hidden = true;
+                highscoreListe.hidden = true;
+                highscoreList.hidden = true;
             }
         }
     }
@@ -662,34 +682,6 @@ function initialize() {
         }
     }
 
-    function drawNextLive() {
-        if (lives < 3 && score - prevScore === 0) {
-            ctx.drawImage(zeroLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 1) {
-            ctx.drawImage(oneLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 2) {
-            ctx.drawImage(twoLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 3) {
-            ctx.drawImage(threeLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 4) {
-            ctx.drawImage(fourLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 5) {
-            ctx.drawImage(fiveLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 6) {
-            ctx.drawImage(sixLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 7) {
-            ctx.drawImage(sevenLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 8) {
-            ctx.drawImage(eigthLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 9) {
-            ctx.drawImage(nineLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score - prevScore === 10) {
-            ctx.drawImage(tenLaserImage, 325, 665, 160, 40);
-        } else if (lives < 3 && score < prevScore) {
-            ctx.drawImage(zeroLaserImage, 325, 665, 160, 40);
-        }
-    }
-
     function drawNextLifeScore() {
         if (lives < 3 && lives > 0) {
             ctx.fillStyle = 'orangered';
@@ -757,55 +749,8 @@ function initialize() {
             ctx.fillText('Hard', canvas.width - 10, +60); // Zeichne den Schwirgkeitsgrad
         }
     }
-
-    function checkHighscores(score) {
-        if (speedMultiplier === 0.75) {
-            const highscores_Easy = JSON.parse(localStorage.getItem('highscores_Easy')) || [];
-            const minHighscore_Easy = highscores_Easy.length >= 10 ? highscores_Easy[9].score : 0;
-
-            if (score > minHighscore_Easy) {
-                const highscoreForm_Easy = document.getElementById('highscoreForm_Easy');
-                const highscore_Easy = document.getElementById('highscore_Easy');
-                const highscoreListeEasy = document.getElementById('highscoreListe_Easy');
-                const highscoreListEasy = document.getElementById('highscoreList_Easy');
-                highscoreForm_Easy.hidden = false;
-                highscore_Easy.hidden = false;
-                highscoreListeEasy.hidden = false;
-                highscoreListEasy.hidden = false;
-            }
-        } else if (speedMultiplier === 1.0) {
-            const highscores_Normal = JSON.parse(localStorage.getItem('highscores_Normal')) || [];
-            const minHighscore_Normal = highscores_Normal.length >= 10 ? highscores_Normal[9].score : 0;
-
-            if (score > minHighscore_Normal) {
-                const highscoreForm_Normal = document.getElementById('highscoreForm_Normal');
-                const highscore_Normal = document.getElementById('highscore_Normal');
-                const highscoreListeNormal = document.getElementById('highscoreListe_Normal');
-                const highscoreListNormal = document.getElementById('highscoreList_Normal');
-                highscoreForm_Normal.hidden = false;
-                highscore_Normal.hidden = false;
-                highscoreListeNormal.hidden = false;
-                highscoreListNormal.hidden = false;
-            }
-        } else if (speedMultiplier === 1.25) {
-            const highscores_Hard = JSON.parse(localStorage.getItem('highscores_Hard')) || [];
-            const minHighscore_Hard = highscores_Hard.length >= 10 ? highscores_Hard[9].score : 0;
-
-            if (score > minHighscore_Hard) {
-                const highscoreForm_Hard = document.getElementById('highscoreForm_Hard');
-                const highscore_Hard = document.getElementById('highscore_Hard');
-                const highscoreListeHard = document.getElementById('highscoreListe_Hard');
-                const highscoreListHard = document.getElementById('highscoreList_Hard');
-                highscoreForm_Hard.hidden = false;
-                highscore_Hard.hidden = false;
-                highscoreListeHard.hidden = false;
-                highscoreListHard.hidden = false;
-            }
-        }
-    }
-
-    /*
-    function checkHighscores(score) {
+	
+	function checkHighscores(score) {
         let difficulty = '';
         if (speedMultiplier === 0.75) {
             difficulty = 'Easy';
@@ -814,7 +759,7 @@ function initialize() {
         } else if (speedMultiplier === 1.25) {
             difficulty = 'Hard';
         }
-
+    
         if (difficulty) {
             jQuery.ajax({
                 url: rocketWarsData.ajaxUrl,
@@ -825,24 +770,22 @@ function initialize() {
                     difficulty: difficulty
                 },
                 success: function (response) {
-                    if (response.success && response.data.length >= 10) {
-                        const minHighscore = response.data[response.data.length - 1].score;
-
-                        if (score > minHighscore) {
-                            const formId = `highscoreForm_${difficulty}`;
-                            const elementsToShow = [
-                                formId,
-                                `highscore_${difficulty}`,
-                                `highscoreListe_${difficulty}`,
-                                `highscoreList_${difficulty}`
-                            ];
-
-                            elementsToShow.forEach(id => {
-                                const element = document.getElementById(id);
-                                if (element) {
-                                    element.hidden = false;
-                                }
-                            });
+                    if (response.success) {
+                        // Wenn Highscores existieren
+                        if (response.data.length < 10) {
+                            if (score > 0) {
+                                showHighscoreFields(difficulty);
+                            }
+                        } else {
+                            const minHighscore = response.data[response.data.length - 1].score;
+                            if (score > minHighscore) {
+                                showHighscoreFields(difficulty);
+                            }
+                        }
+                    } else if (response.data === "No highscores found") {
+                        // Wenn keine Highscores vorhanden sind
+                        if (score > 0) {
+                            showHighscoreFields(difficulty);
                         }
                     }
                 },
@@ -851,8 +794,20 @@ function initialize() {
                 }
             });
         }
-    }*/
+    }
 
+    function showHighscoreFields(difficulty) {
+        const highscore = document.getElementById(`highscore_${difficulty}`);
+        const highscoreForm = document.getElementById(`highscoreForm_${difficulty}`);
+        const highscoreListe = document.getElementById(`highscoreListe_${difficulty}`);
+        const highscoreList = document.getElementById(`highscoreList_${difficulty}`);
+    
+        highscore.hidden = false;
+        highscoreForm.hidden = false;
+        highscoreListe.hidden = false;
+        highscoreList.hidden = false;
+    }
+	
     function clearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
@@ -885,8 +840,6 @@ function initialize() {
 
         drawLivesPics();
 
-        //drawNextLive();
-
         drawNextLifeScore();
 
         drawLaserbank();
@@ -900,6 +853,7 @@ function initialize() {
             animationFrameId = null;
             checkHighscores(score);
             drawGameOver();
+			restartButton.hidden = false;
             return; // Beende die Funktion, wenn die Anzahl der Leben Null ist
         }
 

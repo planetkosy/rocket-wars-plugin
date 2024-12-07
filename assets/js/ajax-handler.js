@@ -1,3 +1,30 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Setze den Standardwert im Dropdown-Menü
+    const defaultDifficulty = 'Easy'; // ID der Standardoption
+    const selectElement = document.getElementById('difficulty');
+    selectElement.value = document.getElementById(defaultDifficulty).value;
+
+    // Lade die Standard-Highscoreliste
+    loadHighscores(defaultDifficulty);
+
+    // Zeige nur die Standardliste an
+    document.querySelectorAll('.highscore-list').forEach(list => list.hidden = true);
+    document.getElementById(`highscoreList_${defaultDifficulty}`).hidden = false;
+    document.getElementById(`highscoreListe_${defaultDifficulty}`).hidden = false;
+});
+
+document.getElementById('difficulty').addEventListener('change', function(event) {
+    event.preventDefault();
+    document.querySelectorAll('.highscore-list').forEach(list => list.hidden = true);
+
+    const difficulty =  event.target.options[event.target.selectedIndex].id;
+
+    loadHighscores(difficulty);
+    document.getElementById(`highscoreList_${difficulty}`).hidden = false;
+    document.getElementById(`highscoreListe_${difficulty}`).hidden = false;
+
+})
+
 document.getElementById('highscoreForm_Easy').addEventListener('submit', function(event) {
     event.preventDefault();
     const name = document.getElementById('name_Easy').value;
@@ -32,7 +59,13 @@ function saveHighscore(difficulty, name, score) {
             score: score
         },
         success: function (response) {
+			const highscore = document.getElementById(`highscore_${difficulty}`);
+            const highscoreForm = document.getElementById(`highscoreForm_${difficulty}`);
+			
             if (response.success) {
+				highscore.hidden = true;
+                highscoreForm.hidden = true;
+                loadHighscores(difficulty);
                 console.log('Highscore gespeichert!');
             } else {
                 console.error(response.data);
@@ -43,7 +76,7 @@ function saveHighscore(difficulty, name, score) {
 
 // Highscores abrufen
 function loadHighscores(difficulty) {
-    jQuery.ajax({
+	jQuery.ajax({
         url: rocketWarsData.ajaxUrl,
         type: 'POST',
         data: {
