@@ -32,7 +32,7 @@ Das Spiel unterscheidet zwischen drei Schwierigkeitsgraden, die deine Geschwindi
 ---
 
 ## 🚀 **Highscores**
-- Wähle im Dropdown-Menü den Schwierigkeitsgrad aus, um diesen zu spielen und die entsprechenden Highscores anzuzeigen.
+- Wähle im Dropdown-Menü den Schwierigkeitsgrad aus, um die entsprechenden Highscores anzuzeigen.
 - Schaffe es in die **Top 10**, um deinen Namen in der Highscoreliste zu verewigen!
 
 ---
