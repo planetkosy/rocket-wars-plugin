@@ -472,8 +472,9 @@ function initialize() {
 			restartButton.hidden = false;
             highscoreListe.hidden = false;
             highscoreList.hidden = false;
+			const fontsize = 50 * scale;
             ctx.fillStyle = 'orange';
-            ctx.font = 'bold 50px sans-serif';
+            ctx.font = `bold ${fontsize}px sans-serif`;
             ctx.textAlign = 'center';
             ctx.fillText("PAUSE", canvas.width / 2, canvas.height / 2);
         } else {
@@ -678,8 +679,9 @@ function initialize() {
     // Funktion zum Zeichnen von "GAME OVER" im Canvas
     function drawGameOver() {
         setTimeout(() => {
+			const fontsize = 80 * scale;
             ctx.fillStyle = 'red'; // Farbe des Texts
-            ctx.font = 'bolder 80px sans-serif'; // Schriftart und -größe
+            ctx.font = `bolder ${fontsize}px sans-serif`; // Schriftart und -größe
             ctx.textAlign = 'center'; // Ausrichtung des Texts (zentriert)
             ctx.textBaseline = 'middle'; // Baseline des Texts (vertikal zentriert)
             ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2); // Zeichne den Text "GAME OVER" in der Mitte des Canvas
@@ -688,98 +690,105 @@ function initialize() {
 
     // Funktion zum Zeichnen des Scores im canvas
     function drawScore() {
+		const fontsize = 50 * scale;
         ctx.fillStyle = 'greenyellow'; // Farbe des Texts
-        ctx.font = 'bold 50px Arial'; // Schriftart und -größe
+        ctx.font = `bold ${fontsize}px Arial`; // Schriftart und -größe
         ctx.textAlign = 'right'; // Ausrichtung des Texts (rechtsbündig)
         ctx.textBaseline = 'bottom'; // Baseline des Texts (unten)
-        ctx.fillText('Score: ' + score, canvas.width - 10, canvas.height - 10); // Zeichne den Text mit dem aktuellen Score   
+        ctx.fillText('Score: ' + score, canvas.width - (10 * scale), canvas.height - (10 * scale)); // Zeichne den Text mit dem aktuellen Score   
     }
 
     function drawLives() {
+		const fontsize = 50 * scale;
         ctx.fillStyle = 'yellowgreen'; // Farbe des Texts
-        ctx.font = 'bold 50px Arial'; // Schriftart und -größe
+        ctx.font = `bold ${fontsize}px Arial`; // Schriftart und -größe
         ctx.textAlign = 'left'; // Ausrichtung des Texts (rechtsbündig)
         ctx.textBaseline = 'bottom'; // Baseline des Texts (unten)
-        ctx.fillText('Lives:', 10, canvas.height - 10); // Zeichne den Text mit dem aktuellen Lives   
+        ctx.fillText('Lives:', 10 * scale, canvas.height - (10 * scale)); // Zeichne den Text mit dem aktuellen Lives   
     }
 
     function drawLivesPics() {
         if (lives === 3) {
-            ctx.drawImage(threelivesImage, 155, canvas.height - 60, 150, 50);
+            ctx.drawImage(threelivesImage, 155 * scale, canvas.height - (60 * scale), 150 * scale, 50 * scale);
         } else if (lives === 2) {
-            ctx.drawImage(twolivesImage, 155, canvas.height - 60, 150, 50);
+            ctx.drawImage(twolivesImage, 155 * scale, canvas.height - (60 * scale), 150 * scale, 50 * scale);
         } else if (lives === 1) {
-            ctx.drawImage(onelivesImage, 155, canvas.height - 60, 150, 50);
+            ctx.drawImage(onelivesImage, 155 * scale, canvas.height - (60 * scale), 150 * scale, 50 * scale);
         } else if (lives === 0) {
-            ctx.drawImage(zerolivesImage, 155, canvas.height - 60, 150, 50);
+            ctx.drawImage(zerolivesImage, 155 * scale, canvas.height - (60 * scale), 150 * scale, 50 * scale);
         }
     }
 
     function drawNextLifeScore() {
         if (lives < 3 && lives > 0) {
+			const fontsize = 25 * scale;
             ctx.fillStyle = 'orangered';
-            ctx.font = '25px Arial';
+            ctx.font = `${fontsize}px Arial`;
             ctx.textAlign = 'left';
             ctx.textBaseline = 'bottom';
-            ctx.fillText('New Life at Score: ' + nextLifeScore, 325, canvas.height - 10); // Zeichne den Text mit dem nextLifeScore   
+            ctx.fillText('New Life at Score: ' + nextLifeScore, 350 * scale, canvas.height - (10 * scale)); // Zeichne den Text mit dem nextLifeScore   
         }
     }
 
     function drawLaserbank() {
         if (laserBank === 10) {
-            ctx.drawImage(tenLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(tenLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 9) {
-            ctx.drawImage(nineLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(nineLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 8) {
-            ctx.drawImage(eigthLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(eigthLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 7) {
-            ctx.drawImage(sevenLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(sevenLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 6) {
-            ctx.drawImage(sixLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(sixLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 5) {
-            ctx.drawImage(fiveLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(fiveLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 4) {
-            ctx.drawImage(fourLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(fourLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 3) {
-            ctx.drawImage(threeLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(threeLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 2) {
-            ctx.drawImage(twoLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(twoLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 1) {
-            ctx.drawImage(oneLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(oneLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         } else if (laserBank === 0) {
-            ctx.drawImage(zeroLaserImage, 165, 11, 160, 40);
+            ctx.drawImage(zeroLaserImage, 165 * scale, 11 * scale, 160 * scale, 40 * scale);
         }
     }
 
     function drawLaserbankText() {
+		const fontsize = 50 * scale;
         ctx.fillStyle = 'orangered';
-        ctx.font = 'bold 50px Arial';
+        ctx.font = `bold ${fontsize}px Arial`;
         ctx.textAlign = 'left';
         ctx.textBaseline = 'bottom';
-        ctx.fillText('Laser:', 10, +60);
+        ctx.fillText('Laser:', 10 * scale, +60 * scale);
     }
 
     function drawDiffcultiy() {
         const difficultySelect = document.getElementById('difficulty');
         const selectedValue = difficultySelect.value;
         if (selectedValue === '0.75') {
+			const fontsize = 50 * scale;
             ctx.fillStyle = 'green'; // Farbe des Texts
-            ctx.font = 'bold 50px Arial'; // Schriftart und -größe
+            ctx.font = `bold ${fontsize}px Arial`; // Schriftart und -größe
             ctx.textAlign = 'right'; // Ausrichtung des Texts (rechtsbündig)
             ctx.textBaseline = 'bottom'; // Baseline des Texts (unten)
-            ctx.fillText('Easy', canvas.width - 10, + 60); // Zeichne den Schwirgkeitsgrad
+            ctx.fillText('Easy', canvas.width - 10 * scale, + 60 * scale); // Zeichne den Schwirgkeitsgrad
         } else if (selectedValue === '1.0') {
+			const fontsize = 50 * scale;
             ctx.fillStyle = 'greenyellow'; // Farbe des Texts
-            ctx.font = 'bold 50px Arial'; // Schriftart und -größe
+            ctx.font = `bold ${fontsize}px Arial`; // Schriftart und -größe
             ctx.textAlign = 'right'; // Ausrichtung des Texts (rechtsbündig)
             ctx.textBaseline = 'bottom'; // Baseline des Texts (unten)
-            ctx.fillText('Normal', canvas.width - 10, +60); // Zeichne den Schwirgkeitsgrad
+            ctx.fillText('Normal', canvas.width - 10 * scale, +60 * scale); // Zeichne den Schwirgkeitsgrad
         } else if (selectedValue === '1.25') {
+			const fontsize = 50 * scale;
             ctx.fillStyle = 'orange'; // Farbe des Texts
-            ctx.font = 'bold 50px Arial'; // Schriftart und -größe
+            ctx.font = `bold ${fontsize}px Arial`; // Schriftart und -größe
             ctx.textAlign = 'right'; // Ausrichtung des Texts (rechtsbündig)
             ctx.textBaseline = 'bottom'; // Baseline des Texts (unten)
-            ctx.fillText('Hard', canvas.width - 10, +60); // Zeichne den Schwirgkeitsgrad
+            ctx.fillText('Hard', canvas.width - 10 * scale, +60 * scale); // Zeichne den Schwirgkeitsgrad
         }
     }
 	

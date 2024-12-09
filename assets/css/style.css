@@ -74,7 +74,7 @@
 
 #highscoreListe_Easy {
     position: absolute;
-    right: 1%;
+    right: 5%;
     top: 20%;
     font-size: 25px;
     font-weight: bolder;
@@ -84,9 +84,8 @@
 
 #highscoreList_Easy {
     position: absolute;
-    left: 80%;
+    right: 8%;
     top: 30%;
-    transform: translate(20%, 10%);
     font-size: 20px;
     font-weight: bolder;
     color: yellowgreen;
@@ -154,7 +153,7 @@
 
 #highscoreListe_Normal {
     position: absolute;
-    right: 1%;
+    right: 5%;
     top: 20%;
     font-size: 25px;
     font-weight: bolder;
@@ -164,9 +163,8 @@
 
 #highscoreList_Normal {
     position: absolute;
-    left: 80%;
+	right: 8%;
     top: 30%;
-    transform: translate(20%, 10%);
     font-size: 20px;
     font-weight: bolder;
     color: yellowgreen;
@@ -234,7 +232,7 @@
 
 #highscoreListe_Hard {
     position: absolute;
-    right: 1%;
+    right: 5%;
     top: 20%;
     font-size: 25px;
     font-weight: bolder;
@@ -244,9 +242,8 @@
 
 #highscoreList_Hard {
     position: absolute;
-    left: 80%;
+    right: 8%;
     top: 30%;
-    transform: translate(20%, 10%);
     font-size: 20px;
     font-weight: bolder;
     color: yellowgreen;
@@ -279,7 +276,7 @@
     left: 25%;
     transform: translate(-50%, -50%);
     margin: 10;
-    width: 220px;
+    width: 200px;
     height: 40px; 
     text-align: center;
     font-size: 20px;
@@ -304,7 +301,7 @@ option {
     left: 40%;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    height: 125px;
+    height: 100px;
     width: 250px;
     font-size: 60px;
     font-weight: bolder;
@@ -363,7 +360,7 @@ option {
 
 #disclaimer p {
 	color: yellowgreen;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;    
     text-align: center;
 	margin-bottom: 0px;
@@ -382,9 +379,109 @@ option {
     }
 }
 
-/*
-@media (max-width: 768px) {
-    h2 {
-        font-size: 36px;
+@media (max-width: 1200px) {
+    #highscore_Easy {
+		width: 500px;
+        font-size: 20px;
     }
-}*/
+
+    #name_Easy {
+        height: 30px;
+        width: 120px;
+        font-size: 15px;
+    }
+
+    #highscoreButton_Easy {
+        height: 30px;
+        width: 100px;
+        font-size: 15px;
+    }
+
+    #highscoreListe_Easy {
+        font-size: 20px;
+    }
+
+    #highscoreList_Easy {
+        font-size: 15px;
+    }
+
+    #highscore_Normal {
+		width: 500px;
+        font-size: 20px;
+    }
+
+    #name_Normal {
+        height: 30px;
+        width: 120px;
+        font-size: 15px;
+    }
+
+    #highscoreButton_Normal {
+        height: 30px;
+        width: 100px;
+        font-size: 15px;
+    }
+
+    #highscoreListe_Normal {
+        font-size: 20px;
+    }
+
+    #highscoreList_Normal {
+        font-size: 15px;
+    }
+
+    #highscore_Hard {
+		width: 500px;
+        font-size: 20px;
+    }
+
+    #name_Hard {
+        height: 30px;
+        width: 120px;
+        font-size: 15px;
+    }
+
+    #highscoreButton_Hard {
+        height: 30px;
+        width: 100px;
+        font-size: 15px;
+    }
+
+    #highscoreListe_Hard {
+        font-size: 20px;
+    }
+
+    #highscoreList_Hard {
+        font-size: 15px;
+    }
+
+    #addDifficulty {
+        font-size: 25px;
+    }
+
+    #difficulty {
+        width: 150px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    #startButton {
+        height: 80px;
+        width: 200px;
+        font-size: 45px;
+    }
+
+    #restartButton {
+        height: 30px;
+        width: 93px;
+        font-size: 15px;
+    }
+
+    #readme a {
+        font-size: 20px;
+    }
+
+    #disclaimer p {
+        font-size: 9px;
+    }
+}

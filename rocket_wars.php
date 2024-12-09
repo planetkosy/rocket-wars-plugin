@@ -3,7 +3,7 @@
  * Plugin Name: Rocket-Wars
  * Plugin URI: https://github.com/planetkosy/rocket-wars-plugin
  * Description: Very simple Game like Space Invaders.
- * Version: 1.0
+ * Version: 1.1
  * Author: planetkosy
  * Author URI: https://planetkosy.de/
  * Github: https://github.com/planetkosy

@@ -63,7 +63,7 @@ Vielen Dank! 🙏
 
 ## 📝 **Credits**
 - **Entwickler:** planetkosy  
-- **Version:** 1.0  
+- **Version:** 1.1  
 - Vielen Dank fürs Spielen und viel Spaß mit **Rocket-Wars**! 🚀
 
 ---
