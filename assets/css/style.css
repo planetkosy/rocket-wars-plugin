@@ -5,8 +5,11 @@
 #space-game {
     margin-top: 0%;
     margin-left: 0%;
-	width: 1280px;
-	height: 720px;
+	width: 100%;
+	height: calc(100vw / 1.777);
+	max-width: 1280px;
+	max-height: 720px;
+	display: block;
 }
 
 #highscore_Easy {
@@ -353,8 +356,8 @@ option {
 
 #disclaimer {
     position: absolute;
-    bottom: 0px;
-    right: -5%;   
+    bottom: 0%;
+    right: 1%;   
 	margin: 0;
 }
 
@@ -363,5 +366,25 @@ option {
     font-size: 15px;
     font-weight: bold;    
     text-align: center;
-	margin-bottom: 4px;
+	margin-bottom: 0px;
 }
+
+#landscape-overlay {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/*
+@media (max-width: 768px) {
+    h2 {
+        font-size: 36px;
+    }
+}*/

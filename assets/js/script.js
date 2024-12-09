@@ -27,56 +27,77 @@ function reloadGame() {
 }
 
 function initialize() {
-    let canvas = document.getElementById("space-game");
-    let ctx = canvas.getContext("2d");
-    let backgroundImage = new Image();
-    backgroundImage.src = rocketWarsData.pluginUrl + "assets/icons/background-fit-canvas.png";
-    let backgroundWidth = 1280;
-    let backgroundHeight = 720;
-    let backgroundY = 0;
-    let backgroundX = 0;
-    let backgroundSpeed = 0.5;
-    let backgroundAlpha = 1.0;
-    let fadeSpeed = 0.01;
-    let rocketImage = new Image();
-    rocketImage.src = rocketWarsData.pluginUrl + "assets/icons/rocket.png";
-    let rocketWidth = 128;
-    let rocketHeight = 73;
-    let rocketX = 200;
-    let rocketY = canvas.height / 2 - rocketImage.height / 2;
-    let rocketSpeed = 5;
-    let laserImage = new Image();
-    laserImage.src = rocketWarsData.pluginUrl + "assets/icons/laser.png";
-    let laserWidth = 60;
-    let laserHeight = 10;
-    let laserSpeed = 20;
-    let laserX = rocketX + rocketWidth;
-    let laserY = rocketY + rocketHeight / 2 - laserHeight / 2;
-    let ufoImage = new Image();
-    ufoImage.src = rocketWarsData.pluginUrl + "assets/icons/ufo.png";
-    let ufoWidth = 128;
-    let ufoHeight = 65;
-    let ufoSpeed = 5;
-    let ufoX = canvas.width;
-    let ufoY = Math.floor(Math.random() * (canvas.height - ufoHeight));
-    let bigUfoImage = new Image();
-    bigUfoImage.src = rocketWarsData.pluginUrl + "assets/icons/bigUfo.png";
-    let bigUfoWidth = 192;
-    let bigUfoHeight = 101;
-    let bigUfoX = canvas.width;
-    let bigUfoY = Math.floor(Math.random() * (canvas.height - bigUfoHeight));
-    let bigUfoSpeed = 3;
-    let bigUfoHitImage = new Image();
-    bigUfoHitImage.src = rocketWarsData.pluginUrl + "assets/icons/bigUfohit.png";
-    let explodeImage = new Image();
-    explodeImage.src = rocketWarsData.pluginUrl + "assets/icons/explode.png";
-    let explodeWidth = 100;
-    let explodeHeight = 76;
-    let bigExplodeImage = new Image();
-    bigExplodeImage.src = rocketWarsData.pluginUrl + "assets/icons/bigExplode.png";
-    let bigExplodeWidth = 133;
-    let bigExplodeHeight = 101;
+	resizeCanvas()
+	
+	const canvas = document.getElementById("space-game");
+	const ctx = canvas.getContext("2d");
 
+	// Basierend auf aktueller Canvas-Größe skalieren
+	const scaleX = canvas.width / 1280;
+	const scaleY = canvas.height / 720;
+	const scale = Math.min(scaleX, scaleY);
+
+	// Hintergrundbild
+	const backgroundImage = new Image();
+	backgroundImage.src = rocketWarsData.pluginUrl + "assets/icons/background-fit-canvas.png";
+	const backgroundWidth = 1280 * scale;
+	const backgroundHeight = 720 * scale;
+	let backgroundX = 0;
+	const backgroundY = 0;
+	const backgroundSpeed = 0.5 * scale;
+	const backgroundAlpha = 1.0;
+	const fadeSpeed = 0.01;
+
+	// Rakete
+	const rocketImage = new Image();
+	rocketImage.src = rocketWarsData.pluginUrl + "assets/icons/rocket.png";
+	const rocketWidth = 128 * scale;
+	const rocketHeight = 73 * scale;
+	const rocketX = 200 * scale;
+	const rocketY = (canvas.height / 2) - (rocketHeight / 2);
+	const rocketSpeed = 5 * scale;
+	
+	// Laser
+	const laserImage = new Image();
+	laserImage.src = rocketWarsData.pluginUrl + "assets/icons/laser.png";
+	const laserWidth = 60 * scale;
+	const laserHeight = 10 * scale;
+	const laserSpeed = 20 * scale;
+	const laserX = rocketX + rocketWidth;
+	const laserY = rocketY + (rocketHeight / 2) - (laserHeight / 2);
+
+	// Ufos
+	const ufoImage = new Image();
+	ufoImage.src = rocketWarsData.pluginUrl + "assets/icons/ufo.png";
+	const ufoWidth = 128 * scale;
+	const ufoHeight = 65 * scale;
+	const ufoSpeed = 5 * scale;
+	const ufoX = canvas.width;
+	const ufoY = Math.random() * (canvas.height - ufoHeight);
+	
+	// Großes Ufo
+	const bigUfoImage = new Image();
+	bigUfoImage.src = rocketWarsData.pluginUrl + "assets/icons/bigUfo.png";
+	const bigUfoWidth = 192 * scale;
+	const bigUfoHeight = 101 * scale;
+	const bigUfoX = canvas.width;
+	const bigUfoY = Math.random() * (canvas.height - bigUfoHeight);
+	const bigUfoSpeed = 3 * scale;
+	
+	const bigUfoHitImage = new Image();
+	bigUfoHitImage.src = rocketWarsData.pluginUrl + "assets/icons/bigUfohit.png";
+
+	// Explosionen
+	const explodeImage = new Image();
+	explodeImage.src = rocketWarsData.pluginUrl + "assets/icons/explode.png";
+	const explodeWidth = 100 * scale;
+	const explodeHeight = 76 * scale;
+
+	const bigExplodeImage = new Image();
+	bigExplodeImage.src = rocketWarsData.pluginUrl + "assets/icons/bigExplode.png";
+	const bigExplodeWidth = 133 * scale;
+	const bigExplodeHeight = 101 * scale;
+	
     let threelivesImage = new Image();
     threelivesImage.src = rocketWarsData.pluginUrl + "assets/icons/livesThree.png";
     let twolivesImage = new Image();
@@ -171,20 +192,22 @@ function initialize() {
 
         // Methode zur Aktualisierung der Position der Rakete
         updatePosition: function () {
+			const scaledSpeed = this.speed * scale;
+			
             // Überprüfe, ob die Rakete nach oben bewegt werden soll
             if (rocket.upPressed && this.y > 0) {
-                this.y -= this.speed * speedMultiplier;
+                this.y -= scaledSpeed * speedMultiplier;
 
             }
             // Überprüfe, ob die Rakete nach unten bewegt werden soll
             if (rocket.downPressed && this.y < canvas.height - this.height) {
-                this.y += this.speed * speedMultiplier;
+                this.y += scaledSpeed * speedMultiplier;
             }
         },
 
         //Methode zur Zeichung der Position der Rakete
         draw: function () {
-            ctx.drawImage(this.image, this.x, this.y);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
     }
 
@@ -197,7 +220,7 @@ function initialize() {
         y: laserY,
 
         draw: function () {
-            ctx.drawImage(this.image, this.x, this.y);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
     }
 
@@ -210,7 +233,7 @@ function initialize() {
         y: ufoY,
 
         draw: function () {
-            ctx.drawImage(this.image, this.x, this.y);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
     }
 
@@ -224,7 +247,7 @@ function initialize() {
         hits: 0,
 
         draw: function () {
-            ctx.drawImage(this.image, this.x, this.y);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
     }
 
@@ -234,7 +257,7 @@ function initialize() {
         height: explodeHeight,
 
         draw: function () {
-            ctx.drawImage(this.image, this.x, this.y);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
     }
 
@@ -244,7 +267,7 @@ function initialize() {
         height: bigExplodeHeight,
 
         draw: function () {
-            ctx.drawImage(this.image, this.x, this.y);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
     }
 
@@ -371,32 +394,42 @@ function initialize() {
 
     // Blende explodeImage ein und nach 1,5 Sekunden wieder aus
     function showExplosion(x, y) {
-        explosions.push({ x: x, y: y, time: Date.now() })
-        ctx.drawImage(explodeImage, x, y);
+		const explosionWidth = 100 * scale;
+    	const explosionHeight = 76 * scale;
+        explosions.push({ x: x, y: y, time: Date.now(), width: explosionWidth, height: explosionHeight });
+        ctx.drawImage(explodeImage, x, y, explosionWidth, explosionHeight);
         setTimeout(function () {
-            for (let i = 0; i < explosions.length; i++) {
-                if (Date.now() - explosions[i].time >= 1500) {
-                    explosions.splice(i, 1);
-                    i--;
-                }
-            }
-        }, 1500);
+        	explosions = explosions.filter(explosion => Date.now() - explosion.time < 1500);
+    	}, 1500);
     }
+	
+	// Zeichne alle Explosionen
+	function drawExplosions() {
+    	for (let i = 0; i < explosions.length; i++) {
+        	const explosion = explosions[i];
+        	ctx.drawImage(explodeImage, explosion.x, explosion.y, explosion.width, explosion.height);
+    	}
+	}
 
     // Blende bigExplodeImage ein und nach 2 Sekunden wieder aus
     function showbigExplosion(x, y) {
-        bigExplosions.push({ x: x, y: y, time: Date.now() })
-        ctx.drawImage(bigExplodeImage, x, y);
+        const bigExplosionWidth = 200 * scale;
+		const bigExplosionHeight = 133 * scale;
+    	bigExplosions.push({ x: x, y: y, time: Date.now(), width: bigExplosionWidth, height: bigExplosionHeight });
+        ctx.drawImage(bigExplodeImage, x, y, bigExplosionWidth, bigExplosionHeight);
         setTimeout(function () {
-            for (let i = 0; i < bigExplosions.length; i++) {
-                if (Date.now() - bigExplosions[i].time >= 2000) {
-                    bigExplosions.splice(i, 1);
-                    i--;
-                }
-            }
-        }, 2000);
+        	bigExplosions = bigExplosions.filter(bigExplosion => Date.now() - bigExplosion.time < 2000);
+    	}, 2000);
     }
 
+	// Zeichne alle bigExplosionen
+	function drawBigExplosions() {
+    	for (let i = 0; i < bigExplosions.length; i++) {
+        	const bigExplosion = bigExplosions[i];
+        	ctx.drawImage(bigExplodeImage, bigExplosion.x, bigExplosion.y, bigExplosion.width, bigExplosion.height);
+    	}
+	}
+	
     // Prüfe auf Kollisionen von 2 Rechecken 
     function checkCollision(rect1, rect2) {
         if (rect1.x < rect2.x + rect2.width &&
@@ -672,13 +705,13 @@ function initialize() {
 
     function drawLivesPics() {
         if (lives === 3) {
-            ctx.drawImage(threelivesImage, 155, 660, 150, 50);
+            ctx.drawImage(threelivesImage, 155, canvas.height - 60, 150, 50);
         } else if (lives === 2) {
-            ctx.drawImage(twolivesImage, 155, 660, 150, 50);
+            ctx.drawImage(twolivesImage, 155, canvas.height - 60, 150, 50);
         } else if (lives === 1) {
-            ctx.drawImage(onelivesImage, 155, 660, 150, 50);
+            ctx.drawImage(onelivesImage, 155, canvas.height - 60, 150, 50);
         } else if (lives === 0) {
-            ctx.drawImage(zerolivesImage, 155, 660, 150, 50);
+            ctx.drawImage(zerolivesImage, 155, canvas.height - 60, 150, 50);
         }
     }
 
@@ -893,16 +926,11 @@ function initialize() {
             // Prüfe Kollision Rocket mit bigUfos
             checkCollisionWithbigUfos();
 
-
             // Zeichne die Explosionen
-            for (let i = 0; i < explosions.length; i++) {
-                ctx.drawImage(explodeImage, explosions[i].x, explosions[i].y);
-            }
+            drawExplosions()
 
             // Zeichne die bigExplosionen
-            for (let i = 0; i < bigExplosions.length; i++) {
-                ctx.drawImage(bigExplodeImage, bigExplosions[i].x, bigExplosions[i].y);
-            }
+            drawBigExplosions()
 
             animationFrameId = requestAnimationFrame(update);
         } else {
@@ -916,3 +944,35 @@ function initialize() {
     // Rufe die update-Funktion auf, um die Animation zu starten
     update();
 }
+
+function enforceLandscape() {
+    const overlay = document.getElementById('landscape-overlay');
+
+    if (window.innerWidth < window.innerHeight) {
+        overlay.style.display = 'flex'; // Overlay anzeigen
+    } else {
+        overlay.style.display = 'none'; // Overlay ausblenden
+    }
+}
+
+// Überprüfen bei Seitenlade- und Resize-Events
+window.addEventListener('load', enforceLandscape);
+window.addEventListener('resize', enforceLandscape);
+
+function resizeCanvas() {
+    const canvas = document.getElementById("space-game");
+    const aspectRatio = 1280 / 720; // Ursprüngliches Seitenverhältnis des Spiels
+
+    // Breite und Höhe basierend auf Fenstergröße berechnen
+    canvas.width = window.innerWidth; // Maximale Breite des Fensters
+    canvas.height = canvas.width / aspectRatio; // Höhe berechnen, um Seitenverhältnis zu bewahren
+
+    // Überprüfen, ob Höhe die Fensterhöhe überschreitet
+    if (canvas.height > window.innerHeight) {
+        canvas.height = window.innerHeight; // Maximale Höhe des Fensters
+        canvas.width = canvas.height * aspectRatio; // Breite entsprechend anpassen
+    }
+}
+
+// Event-Listener für Fenstergrößenänderung
+window.addEventListener("resize", resizeCanvas);

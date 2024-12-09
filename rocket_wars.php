@@ -44,7 +44,12 @@ function rocket_wars_enqueue_scripts()
 	
 	wp_add_inline_style(
         'rocket-wars-style',
-        "#space-game { background-image: url('{$plugin_url}assets/icons/rocket-wars.jpg'); }"
+        "#space-game { 
+			background-image: url('{$plugin_url}assets/icons/rocket-wars.jpg');
+			background-size: cover;
+        	background-position: center;
+        	background-repeat: no-repeat;
+		}"
     );
 }
 add_action('wp_enqueue_scripts', 'rocket_wars_enqueue_scripts');
